@@ -11,13 +11,6 @@ class Cliente:
 class Clientes:
     lista = []
 
-    def __init__(self, lista):
-        self.lista = lista
-    
-    def __str__(self):
-        for cliente in self.lista:
-            print(cliente)
-
     @staticmethod
     def buscar(dni):
         for cliente in Clientes.lista:
