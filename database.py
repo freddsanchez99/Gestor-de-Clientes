@@ -8,7 +8,7 @@ class Cliente:
         return f"{self.dni} -> {self.nombre} {self.apellido}"
 
 
-class CLientes:
+class Clientes:
     lista = []
 
     def __init__(self, lista):
@@ -20,7 +20,7 @@ class CLientes:
 
     @staticmethod
     def buscar(dni):
-        for cliente in Cliente.lista:
+        for cliente in Clientes.lista:
             if cliente.dni == dni:
                 return cliente
         return None
