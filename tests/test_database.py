@@ -1,3 +1,4 @@
+import helpers
 import copy
 import unittest
 import database as db
@@ -34,3 +35,9 @@ class TestDatabase(unittest.TestCase):
         l_initial = len(db.Clientes.lista)
         db.Clientes.eliminar('789')
         self.assertEqual(len(db.Clientes.lista), l_initial - 1)
+
+    def test_validar_dni(self):
+        self.assertFalse(helpers.validar_dni('123', db.Clientes.lista))
+        self.assertTrue(helpers.validar_dni('124', db.Clientes.lista))
+        self.assertFalse(helpers.validar_dni('AAA', db.Clientes.lista))
+        self.assertFalse(helpers.validar_dni('098765432123', db.Clientes.lista))
