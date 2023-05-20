@@ -1,3 +1,4 @@
+import copy
 import unittest
 import database as db
 
@@ -15,3 +16,21 @@ class TestDatabase(unittest.TestCase):
         self.assertIsNotNone(c_exists)
         self.assertIsNone(c_no_exists)
     
+    def test_crear_clientes(self):
+        l_initial = len(db.Clientes.lista)
+        n_client = db.Clientes.crear('246', 'Raul', 'Lara')
+        self.assertEqual(len(db.Clientes.lista), l_initial + 1)
+        self.assertEqual(n_client.dni, '246')
+        self.assertEqual(n_client.nombre, 'Raul')
+        self.assertEqual(n_client.apellido, 'Lara')
+    
+    def test_modificar_clientes(self):
+        tm_client = copy.copy(db.Clientes.buscar('456'))
+        m_client = db.Clientes.modificar('456', 'Lourdes', 'Alarcon')
+        self.assertEqual(tm_client.nombre, 'Lu')
+        self.assertEqual(m_client.nombre, 'Lourdes')
+
+    def test_eliminar_clientes(self):
+        l_initial = len(db.Clientes.lista)
+        db.Clientes.eliminar('789')
+        self.assertEqual(len(db.Clientes.lista), l_initial - 1)

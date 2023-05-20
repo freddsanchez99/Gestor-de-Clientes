@@ -28,18 +28,18 @@ class Clientes:
     @staticmethod
     def crear(dni, nombre, apellido):
         cliente = Cliente(dni, nombre, apellido)
-        Cliente.lista.append(cliente)
+        Clientes.lista.append(cliente)
         return cliente
     
     @staticmethod
     def modificar(dni, nombre, apellido):
-        cliente = Cliente.buscar(dni)
+        cliente = Clientes.buscar(dni)
         cliente.nombre = nombre
         cliente.apellido = apellido
         return cliente
     
     @staticmethod
     def eliminar(dni):
-        cliente = Cliente.buscar(dni)
-        Cliente.lista.remove(cliente)
+        cliente = Clientes.buscar(dni)
+        Clientes.lista.remove(cliente)
         return cliente
